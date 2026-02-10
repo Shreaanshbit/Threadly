@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threadly - Premium Clothing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Threadly</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">Cart</a></li>
+                <li><a href="#contact">Orders</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#search" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </a>
+                <a href="cart.html" class="icon-btn cart-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">2</span>
+                </a>
+                <a href="#profile" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="fade-in">Men's Collection</h1>
+                <p class="fade-in-delay">Showing 124 curated items</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="products-layout">
+                <aside class="sidebar">
+                    <div class="filter-header">
+                        <h3>REFINE SEARCH</h3>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Categories</h4>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="men" checked>
+                            <span>Men</span>
+                            <span class="count">124</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="women">
+                            <span>Women</span>
+                            <span class="count">86</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="kids">
+                            <span>Kids</span>
+                            <span class="count">42</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Price Range</h4>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="under50">
+                            <span>Under $50</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="50-100">
+                            <span>$50 - $100</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="over100">
+                            <span>Over $100</span>
+                        </label>
+                    </div>
+
+                    <button class="reset-btn">Reset Filters</button>
+                </aside>
+
+                <div class="products-grid">
+                    <div class="sort-bar">
+                        <span>SORT BY</span>
+                        <select id="sortSelect">
+                            <option>Featured Arrivals</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest</option>
+                        </select>
+                    </div>
+
+                    <div class="grid" id="productsGrid">
+                        <!-- Product 1 -->
+                        <div class="product-card" data-price="129">
+                            <div class="product-image">
+                                <span class="badge">NEW SEASON</span>
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #2F3E46 0%, #354F52 100%);">
+                                    <div class="product-placeholder">CLASSIC NAVY BLAZER</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">MEN'S OUTERWEAR</div>
+                                <h3 class="product-name">Classic Navy Slim-Fit Blazer</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.8</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$129.00</span>
+                                    <span class="old-price">$180.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card" data-price="89">
+                            <div class="product-image">
+                                <span class="badge limited">LIMITED OFFER</span>
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #52796F 0%, #84A98C 100%);">
+                                    <div class="product-placeholder">MERINO WOOL SWEATER</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">MEN'S ESSENTIALS</div>
+                                <h3 class="product-name">Premium Merino Wool Sweater</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.9</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$89.00</span>
+                                    <span class="old-price">$145.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card" data-price="55">
+                            <div class="product-image">
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #CAD2C5 0%, #84A98C 100%);">
+                                    <div class="product-placeholder">OXFORD SHIRT</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">MEN'S SHIRTS</div>
+                                <h3 class="product-name">Oxford Button-Down Shirt</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.9</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$55.00</span>
+                                    <span class="old-price">$75.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card" data-price="72">
+                            <div class="product-image">
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #84A98C 0%, #CAD2C5 100%);">
+                                    <div class="product-placeholder">ORGANIC HOODIE</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">THREADLY ESSENTIALS</div>
+                                <h3 class="product-name">Signature Oversized Organic Hoodie</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.8</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$72.00</span>
+                                    <span class="old-price">$110.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card" data-price="120">
+                            <div class="product-image">
+                                <span class="badge">NEW SEASON</span>
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #354F52 0%, #52796F 100%);">
+                                    <div class="product-placeholder">SELVEDGE DENIM</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">MEN'S DENIM</div>
+                                <h3 class="product-name">Slim-Fit Selvedge Denim</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.7</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$120.00</span>
+                                    <span class="old-price">$160.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card" data-price="45">
+                            <div class="product-image">
+                                <button class="wishlist-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                                <div class="product-img-wrapper" style="background: linear-gradient(135deg, #CAD2C5 0%, #fff 100%);">
+                                    <div class="product-placeholder">ESSENTIAL TEE</div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">MEN'S BASICS</div>
+                                <h3 class="product-name">Essential Cotton Tee</h3>
+                                <div class="product-rating">
+                                    <span class="stars">★</span>
+                                    <span class="rating-value">4.6</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$45.00</span>
+                                </div>
+                                <button class="view-details-btn" onclick="window.location.href='product.html'">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="page-btn" disabled>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span>...</span>
+                        <button class="page-btn">12</button>
+                        <button class="page-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Threadly</h3>
+                <p>Premium clothing designed for the modern individual. Experience comfort, style, and sustainability with Threadly's curated collections.</p>
+                <div class="social-links">
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>EXPLORE</h4>
+                <ul>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Kids & Baby</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>SUPPORT</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="admin-login.html" class="admin-link">Admin Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 THREADLY STORE. BUILT FOR EXCELLENCE.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
