@@ -12,5 +12,5 @@ export async function seedAdminIfNeeded() {
 
   const passwordHash = await bcrypt.hash(password, 10);
   await Admin.create({ email: email.toLowerCase(), passwordHash });
-  console.log("Admin seeded");
+  console.log("Admin seeded:", email.toLowerCase());
 }
