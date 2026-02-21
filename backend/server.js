@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import  {seedAdminIfNeeded} from "./utils/seedAdmin.js";
 import authRoutes from "./routes/auth.routes.js";
 import offerRoutes from "./routes/offer.routes.js";
+import orderRoutes from "./routes/order.routes.js";
 import productRoutes from "./routes/product.routes.js";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/offers", offerRoutes);
+app.use("/api/orders", orderRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
