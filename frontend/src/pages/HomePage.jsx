@@ -3,19 +3,40 @@ import { useCart } from "../context/index.jsx";
 import { useToast } from "../context/index.jsx";
 
 const ALL_PRODUCTS = [
-  { id:1, price:129, badge:"NEW SEASON",    badgeClass:"",        bg:"linear-gradient(135deg,#2F3E46 0%,#354F52 100%)", placeholder:"CLASSIC NAVY BLAZER",  category:"MEN'S OUTERWEAR",     name:"Classic Navy Slim-Fit Blazer",       rating:"4.8", oldPrice:"$180.00" },
-  { id:2, price:89,  badge:"LIMITED OFFER", badgeClass:"limited", bg:"linear-gradient(135deg,#52796F 0%,#84A98C 100%)", placeholder:"MERINO WOOL SWEATER",  category:"MEN'S ESSENTIALS",    name:"Premium Merino Wool Sweater",        rating:"4.9", oldPrice:"$145.00" },
-  { id:3, price:55,  badge:null,            badgeClass:"",        bg:"linear-gradient(135deg,#CAD2C5 0%,#84A98C 100%)", placeholder:"OXFORD SHIRT",         category:"MEN'S SHIRTS",        name:"Oxford Button-Down Shirt",           rating:"4.9", oldPrice:"$75.00" },
-  { id:4, price:72,  badge:null,            badgeClass:"",        bg:"linear-gradient(135deg,#84A98C 0%,#CAD2C5 100%)", placeholder:"ORGANIC HOODIE",       category:"THREADLY ESSENTIALS", name:"Signature Oversized Organic Hoodie", rating:"4.8", oldPrice:"$110.00" },
-  { id:5, price:120, badge:"NEW SEASON",    badgeClass:"",        bg:"linear-gradient(135deg,#354F52 0%,#52796F 100%)", placeholder:"SELVEDGE DENIM",       category:"MEN'S DENIM",         name:"Slim-Fit Selvedge Denim",            rating:"4.7", oldPrice:"$160.00" },
-  { id:6, price:45,  badge:null,            badgeClass:"",        bg:"linear-gradient(135deg,#CAD2C5 0%,#fff 100%)",    placeholder:"ESSENTIAL TEE",        category:"MEN'S BASICS",        name:"Essential Cotton Tee",               rating:"4.6", oldPrice:null },
+  // ── MEN ──────────────────────────────────────────────────────────────────
+  { id:1,  price:129, badge:"NEW SEASON",    badgeClass:"",        section:"Men",        category:"MEN'S OUTERWEAR",     bg:"linear-gradient(135deg,#2F3E46 0%,#354F52 100%)", placeholder:"CLASSIC NAVY\nBLAZER",    name:"Classic Navy Slim-Fit Blazer",       rating:"4.8", oldPrice:"$180.00" },
+  { id:2,  price:89,  badge:"LIMITED OFFER", badgeClass:"limited", section:"Men",        category:"MEN'S ESSENTIALS",    bg:"linear-gradient(135deg,#52796F 0%,#84A98C 100%)", placeholder:"MERINO WOOL\nSWEATER",    name:"Premium Merino Wool Sweater",        rating:"4.9", oldPrice:"$145.00" },
+  { id:3,  price:55,  badge:null,            badgeClass:"",        section:"Men",        category:"MEN'S SHIRTS",        bg:"linear-gradient(135deg,#CAD2C5 0%,#84A98C 100%)", placeholder:"OXFORD\nSHIRT",          name:"Oxford Button-Down Shirt",           rating:"4.9", oldPrice:"$75.00" },
+  { id:4,  price:72,  badge:null,            badgeClass:"",        section:"Men",        category:"MEN'S ESSENTIALS",    bg:"linear-gradient(135deg,#84A98C 0%,#CAD2C5 100%)", placeholder:"ORGANIC\nHOODIE",        name:"Signature Oversized Organic Hoodie", rating:"4.8", oldPrice:"$110.00" },
+  { id:5,  price:120, badge:"NEW SEASON",    badgeClass:"",        section:"Men",        category:"MEN'S DENIM",         bg:"linear-gradient(135deg,#354F52 0%,#52796F 100%)", placeholder:"SELVEDGE\nDENIM",        name:"Slim-Fit Selvedge Denim",            rating:"4.7", oldPrice:"$160.00" },
+  { id:6,  price:45,  badge:null,            badgeClass:"",        section:"Men",        category:"MEN'S BASICS",        bg:"linear-gradient(135deg,#CAD2C5 0%,#fff 100%)",    placeholder:"ESSENTIAL\nTEE",         name:"Essential Cotton Tee",               rating:"4.6", oldPrice:null },
+
+  // ── WOMEN ─────────────────────────────────────────────────────────────────
+  { id:7,  price:135, badge:"NEW SEASON",    badgeClass:"",        section:"Women",      category:"WOMEN'S OUTERWEAR",   bg:"linear-gradient(135deg,#354F52 0%,#84A98C 100%)", placeholder:"TRENCH\nCOAT",          name:"Classic Belted Trench Coat",         rating:"4.9", oldPrice:"$190.00" },
+  { id:8,  price:95,  badge:"BESTSELLER",    badgeClass:"limited", section:"Women",      category:"WOMEN'S DRESSES",     bg:"linear-gradient(135deg,#84A98C 0%,#CAD2C5 100%)", placeholder:"WRAP\nDRESS",           name:"Floral Wrap Midi Dress",             rating:"4.8", oldPrice:"$130.00" },
+  { id:9,  price:68,  badge:null,            badgeClass:"",        section:"Women",      category:"WOMEN'S KNITWEAR",    bg:"linear-gradient(135deg,#CAD2C5 0%,#52796F 100%)", placeholder:"RIBBED\nKNIT TOP",      name:"Ribbed Turtleneck Knit Top",         rating:"4.7", oldPrice:"$90.00" },
+  { id:10, price:115, badge:"NEW SEASON",    badgeClass:"",        section:"Women",      category:"WOMEN'S DENIM",       bg:"linear-gradient(135deg,#52796F 0%,#354F52 100%)", placeholder:"HIGH RISE\nJEANS",      name:"High-Rise Straight Leg Jeans",       rating:"4.8", oldPrice:"$150.00" },
+  { id:11, price:42,  badge:null,            badgeClass:"",        section:"Women",      category:"WOMEN'S BASICS",      bg:"linear-gradient(135deg,#CAD2C5 0%,#84A98C 100%)", placeholder:"LINEN\nBLENED TSHIRT", name:"Relaxed Linen Blend Tee",            rating:"4.6", oldPrice:null },
+  { id:12, price:158, badge:"LIMITED OFFER", badgeClass:"limited", section:"Women",      category:"WOMEN'S OUTERWEAR",   bg:"linear-gradient(135deg,#2F3E46 0%,#52796F 100%)", placeholder:"WOOL\nBLAZER",          name:"Structured Wool Blazer",             rating:"4.9", oldPrice:"$220.00" },
+
+  // ── ACCESSORIES ───────────────────────────────────────────────────────────
+  { id:13, price:48,  badge:null,            badgeClass:"",        section:"Accessories",category:"BAGS",                bg:"linear-gradient(135deg,#354F52 0%,#2F3E46 100%)", placeholder:"CANVAS\nTOTE",          name:"Premium Canvas Tote Bag",            rating:"4.7", oldPrice:null },
+  { id:14, price:35,  badge:"BESTSELLER",    badgeClass:"limited", section:"Accessories",category:"HEADWEAR",            bg:"linear-gradient(135deg,#84A98C 0%,#354F52 100%)", placeholder:"MERINO\nBEANIE",        name:"Merino Wool Beanie",                 rating:"4.9", oldPrice:"$50.00" },
+  { id:15, price:65,  badge:null,            badgeClass:"",        section:"Accessories",category:"BELTS & WALLETS",     bg:"linear-gradient(135deg,#2F3E46 0%,#84A98C 100%)", placeholder:"LEATHER\nWALLET",       name:"Full-Grain Leather Wallet",          rating:"4.8", oldPrice:null },
+  { id:16, price:45,  badge:"NEW SEASON",    badgeClass:"",        section:"Accessories",category:"EYEWEAR",             bg:"linear-gradient(135deg,#52796F 0%,#CAD2C5 100%)", placeholder:"AVIATOR\nSUNGLASS",    name:"Polarized Aviator Sunglasses",       rating:"4.7", oldPrice:"$70.00" },
+  { id:17, price:89,  badge:null,            badgeClass:"",        section:"Accessories",category:"BAGS",                bg:"linear-gradient(135deg,#CAD2C5 0%,#354F52 100%)", placeholder:"CROSSBODY\nBAG",        name:"Minimalist Crossbody Bag",           rating:"4.6", oldPrice:"$120.00" },
+  { id:18, price:28,  badge:null,            badgeClass:"",        section:"Accessories",category:"HEADWEAR",            bg:"linear-gradient(135deg,#84A98C 0%,#52796F 100%)", placeholder:"BUCKET\nHAT",           name:"Washed Cotton Bucket Hat",           rating:"4.5", oldPrice:null },
 ];
+
+const SECTIONS = ["All", "Men", "Women", "Accessories"];
 
 function WishlistBtn() {
   const [active, setActive] = useState(false);
   return (
     <button className="wishlist-btn" onClick={e => { e.stopPropagation(); setActive(w => !w); }}>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill={active ? "#e74c3c" : "none"} stroke={active ? "#e74c3c" : "currentColor"} strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24"
+        fill={active ? "#e74c3c" : "none"}
+        stroke={active ? "#e74c3c" : "currentColor"} strokeWidth="2">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     </button>
@@ -25,27 +46,38 @@ function WishlistBtn() {
 export default function HomePage({ navigate }) {
   const { totalQty } = useCart();
   const show = useToast();
-  const [sort, setSort] = useState("Featured Arrivals");
+
+  const [section,     setSection]     = useState("All");
+  const [sort,        setSort]        = useState("Featured Arrivals");
   const [priceFilter, setPriceFilter] = useState("all");
 
+  // --- Filtering ---
   let products = [...ALL_PRODUCTS];
+  if (section !== "All")         products = products.filter(p => p.section === section);
   if (priceFilter === "under50") products = products.filter(p => p.price < 50);
   if (priceFilter === "50-100")  products = products.filter(p => p.price >= 50 && p.price <= 100);
   if (priceFilter === "over100") products = products.filter(p => p.price > 100);
   if (sort === "Price: Low to High") products.sort((a, b) => a.price - b.price);
   if (sort === "Price: High to Low") products.sort((a, b) => b.price - a.price);
 
+  // Count per section for badges
+  const countFor = s => ALL_PRODUCTS.filter(p => p.section === s).length;
+
   const resetFilters = () => {
-    setPriceFilter("all");
-    setSort("Featured Arrivals");
+    setSection("All"); setPriceFilter("all"); setSort("Featured Arrivals");
     show("Filters reset", "info");
   };
 
+  const heroTitle = section === "All" ? "All Collections" : `${section}'s Collection`;
+
   return (
     <>
+      {/* ── NAVBAR ── */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo"><a href="#" onClick={e => { e.preventDefault(); navigate("home"); }}>Threadly</a></div>
+          <div className="logo">
+            <a href="#" onClick={e => { e.preventDefault(); navigate("home"); }}>Threadly</a>
+          </div>
           <ul className="nav-links">
             <li><a href="#" className="active" onClick={e => e.preventDefault()}>Home</a></li>
             <li><a href="#" onClick={e => { e.preventDefault(); navigate("cart"); }}>Cart</a></li>
@@ -53,23 +85,31 @@ export default function HomePage({ navigate }) {
           </ul>
           <div className="nav-icons">
             <a href="#search" className="icon-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
             </a>
             <a href="#" className="icon-btn cart-icon" onClick={e => { e.preventDefault(); navigate("cart"); }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
               <span className="cart-count">{totalQty}</span>
             </a>
             <a href="#profile" className="icon-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
             </a>
           </div>
         </div>
       </nav>
 
       <main>
+        {/* ── HERO ── */}
         <section className="hero">
           <div className="hero-content">
-            <h1 className="fade-in">Men's Collection</h1>
+            <h1 className="fade-in">{heroTitle}</h1>
             <p className="fade-in-delay">Showing {products.length} curated items</p>
           </div>
         </section>
@@ -77,8 +117,36 @@ export default function HomePage({ navigate }) {
         <div className="container">
           <div className="products-layout">
 
+            {/* ── SIDEBAR ── */}
             <aside className="sidebar">
               <div className="filter-header"><h3>REFINE SEARCH</h3></div>
+
+              {/* Category / Section filter */}
+              <div className="filter-section">
+                <h4>Categories</h4>
+                <label className="filter-option">
+                  <input type="radio" name="section" value="All" checked={section === "All"} onChange={() => setSection("All")} />
+                  <span>All</span>
+                  <span className="count">{ALL_PRODUCTS.length}</span>
+                </label>
+                <label className="filter-option">
+                  <input type="radio" name="section" value="Men" checked={section === "Men"} onChange={() => setSection("Men")} />
+                  <span>Men</span>
+                  <span className="count">{countFor("Men")}</span>
+                </label>
+                <label className="filter-option">
+                  <input type="radio" name="section" value="Women" checked={section === "Women"} onChange={() => setSection("Women")} />
+                  <span>Women</span>
+                  <span className="count">{countFor("Women")}</span>
+                </label>
+                <label className="filter-option">
+                  <input type="radio" name="section" value="Accessories" checked={section === "Accessories"} onChange={() => setSection("Accessories")} />
+                  <span>Accessories</span>
+                  <span className="count">{countFor("Accessories")}</span>
+                </label>
+              </div>
+
+              {/* Price filter */}
               <div className="filter-section">
                 <h4>Price Range</h4>
                 {[["all","All Prices"],["under50","Under $50"],["50-100","$50 – $100"],["over100","Over $100"]].map(([val, label]) => (
@@ -88,9 +156,11 @@ export default function HomePage({ navigate }) {
                   </label>
                 ))}
               </div>
+
               <button className="reset-btn" onClick={resetFilters}>Reset Filters</button>
             </aside>
 
+            {/* ── PRODUCT GRID ── */}
             <div className="products-grid">
               <div className="sort-bar">
                 <span>SORT BY</span>
@@ -103,14 +173,15 @@ export default function HomePage({ navigate }) {
 
               <div className="grid" id="productsGrid">
                 {products.length === 0 ? (
-                  <div style={{ gridColumn: "1/-1", textAlign: "center", padding: "3rem", color: "var(--color-text-light)" }}>
+                  <div style={{ gridColumn:"1/-1", textAlign:"center", padding:"3rem", color:"var(--color-text-light)" }}>
                     <p>No products match your filters.</p>
-                    <button className="reset-btn" style={{ marginTop: "1rem" }} onClick={resetFilters}>Clear Filters</button>
+                    <button className="reset-btn" style={{ marginTop:"1rem" }} onClick={resetFilters}>Clear Filters</button>
                   </div>
                 ) : products.map(p => (
-                  <div key={p.id} className="product-card" data-price={p.price} style={{ cursor: "pointer" }} onClick={() => navigate("product")}>
+                  <div key={p.id} className="product-card" data-price={p.price}
+                    style={{ cursor:"pointer" }} onClick={() => navigate("product")}>
                     <div className="product-image">
-                      {p.badge && <span className={`badge${p.badgeClass ? " " + p.badgeClass : ""}`}>{p.badge}</span>}
+                      {p.badge && <span className={`badge${p.badgeClass ? " "+p.badgeClass : ""}`}>{p.badge}</span>}
                       <WishlistBtn />
                       <div className="product-img-wrapper" style={{ background: p.bg }}>
                         <div className="product-placeholder">{p.placeholder}</div>
@@ -127,8 +198,11 @@ export default function HomePage({ navigate }) {
                         <span className="price">${p.price}.00</span>
                         {p.oldPrice && <span className="old-price">{p.oldPrice}</span>}
                       </div>
-                      <button className="view-details-btn" onClick={e => { e.stopPropagation(); navigate("product"); }}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      <button className="view-details-btn"
+                        onClick={e => { e.stopPropagation(); navigate("product"); }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
                         View Details
                       </button>
                     </div>
@@ -141,6 +215,7 @@ export default function HomePage({ navigate }) {
         </div>
       </main>
 
+      {/* ── FOOTER ── */}
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-section">
@@ -154,9 +229,9 @@ export default function HomePage({ navigate }) {
           <div className="footer-section">
             <h4>EXPLORE</h4>
             <ul>
-              <li><a href="#" onClick={e => e.preventDefault()}>Men's Collection</a></li>
-              <li><a href="#" onClick={e => e.preventDefault()}>Women's Collection</a></li>
-              <li><a href="#" onClick={e => e.preventDefault()}>Kids &amp; Baby</a></li>
+              <li><a href="#" onClick={e => { e.preventDefault(); setSection("Men");         window.scrollTo(0,0); }}>Men's Collection</a></li>
+              <li><a href="#" onClick={e => { e.preventDefault(); setSection("Women");       window.scrollTo(0,0); }}>Women's Collection</a></li>
+              <li><a href="#" onClick={e => { e.preventDefault(); setSection("Accessories"); window.scrollTo(0,0); }}>Accessories</a></li>
               <li><a href="#" onClick={e => e.preventDefault()}>New Arrivals</a></li>
             </ul>
           </div>
