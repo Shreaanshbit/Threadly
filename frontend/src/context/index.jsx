@@ -38,28 +38,91 @@ export function ToastProvider({ children }) {
 export const useToast = () => useContext(ToastCtx);
 
 // ── Cart ────────────────────────────────────────────────
-const INITIAL = [
-  { id:1, name:"Premium Wool Blend Coat",      price:129, qty:1, sku:"TL-2048", color:"Navy Blue",   size:"Large",  bg:"linear-gradient(135deg,#2F3E46 0%,#354F52 100%)", placeholder:"WOOL COAT" },
-  { id:2, name:"Organic Cotton Essential Tee", price:35,  qty:2, sku:"TL-1001", color:"Oatri White", size:"Medium", bg:"linear-gradient(135deg,#CAD2C5 0%,#fff 100%)",    placeholder:"COTTON TEE" },
-  { id:3, name:"Sprint Pro Running Shoes",     price:89,  qty:1, sku:"FL-2003", color:"Velocity Red", size:"10",   bg:"linear-gradient(135deg,#84A98C 0%,#52796F 100%)",  placeholder:"RUNNING\nSHOES" },
-];
 const CartCtx = createContext(null);
+
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
-    try { const s = localStorage.getItem("tly_cart"); return s ? JSON.parse(s) : INITIAL; } catch { return INITIAL; }
+    try {
+      const saved = localStorage.getItem("tly_cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
   });
-  useEffect(() => { localStorage.setItem("tly_cart", JSON.stringify(cart)); }, [cart]);
-  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
-  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const shipping = subtotal>100?0:8;
-  const tax = +(subtotal*0.05).toFixed(2);
-  const total = +(subtotal+shipping+tax).toFixed(2);
-  const addItem = p => setCart(prev=>{const e=prev.find(i=>i.id===p.id);return e?prev.map(i=>i.id===p.id?{...i,qty:i.qty+1}:i):[...prev,{...p,qty:1}];});
-  const removeItem = id => setCart(prev=>prev.filter(i=>i.id!==id));
-  const updateQty = (id,delta) => setCart(prev=>prev.map(i=>i.id===id?{...i,qty:Math.max(1,i.qty+delta)}:i));
+
+  useEffect(() => {
+    localStorage.setItem("tly_cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const shipping = subtotal > 100 ? 0 : 8;
+  const tax = +(subtotal * 0.05).toFixed(2);
+  const total = +(subtotal + shipping + tax).toFixed(2);
+
+  const addItem = (product) => {
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id
+            ? { ...item, qty: item.qty + 1 }
+            : item
+        );
+      }
+
+      return [
+        ...prev,
+        {
+          id: product.id,
+          name: product.name,
+          price: product.offer ?? product.price,
+          qty: 1,
+          img: product.img || "",
+          cat: product.cat || "",
+          stock: product.stock ?? 0
+        }
+      ];
+    });
+  };
+
+  const removeItem = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const updateQty = (id, delta) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, qty: Math.max(1, item.qty + delta) }
+          : item
+      )
+    );
+  };
+
   const clearCart = () => setCart([]);
-  return <CartCtx.Provider value={{cart,totalQty,subtotal,shipping,tax,total,addItem,removeItem,updateQty,clearCart}}>{children}</CartCtx.Provider>;
+
+  return (
+    <CartCtx.Provider
+      value={{
+        cart,
+        totalQty,
+        subtotal,
+        shipping,
+        tax,
+        total,
+        addItem,
+        removeItem,
+        updateQty,
+        clearCart
+      }}
+    >
+      {children}
+    </CartCtx.Provider>
+  );
 }
+
 export const useCart = () => useContext(CartCtx);
 
 // ── Admin ───────────────────────────────────────────────
